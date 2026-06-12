@@ -32,3 +32,7 @@ _이텔릭(기울어진 글자)_
 ```python
 print("Hello Python!")
 ```
+
+### 링크와 이미지
+링크: [Markdown 공식 문서](https://www.markdownguide.org)
+이미지: ![파이썬 로고](https://www.python.org/static/img/python-logo.png)
