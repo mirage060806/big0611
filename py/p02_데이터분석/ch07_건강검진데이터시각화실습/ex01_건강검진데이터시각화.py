@@ -26,7 +26,7 @@ df.drop(
 # 컬럼명 변경
 df.rename(
     columns={
-        '연령대 코드(5세단위)': '연령코드',
+        '연령대코드(5세단위)': '연령코드',
         '신장(5cm단위)': '신장',
         '체중(5kg단위)': '체중',
         '식전혈당(공복혈당)': '혈당'
@@ -79,11 +79,11 @@ sns.scatterplot(x=df['혈당'], y=df['총콜레스테롤'], hue=df['성별코드
 
 # 연령별 분석
 # 1. 나이에 따른 총 콜레스테롤 추이
-sns.lineplot(x=df['연령대코드(5세단위)'], y=df['총콜레스테롤'])
+sns.lineplot(x=df['연령코드'], y=df['총콜레스테롤'])
 
 # 2. 연령에 따른 혈색소 수치 분포
 fig = plt.figure(figsize=(10, 5))
-sns.boxplot(x=df['연령대코드(5세단위)'], y=df['혈색소'])
+sns.boxplot(x=df['연령코드'], y=df['혈색소'])
 
 df.describe()
 
@@ -91,4 +91,14 @@ df.describe()
 # 성별 및 연령별 비교 분석
 # 1. 연령과 성별에 따른 혈당 분석
 fig = plt.figure(figsize=(12, 5))
-sns.barplot(x=df['연령대코드(5세단위)'], y=df['혈당'], hue=df['성별코드'])
+sns.barplot(x=df['연령코드'], y=df['혈당'], hue=df['성별코드'])
+
+# 2. 나이에 따른 허리둘레 분포
+fig = plt.figure(figsize=(12, 5))
+sns.violinplot(x=df['연령코드'], y=df['허리둘레'], hue=df['성별코드'])
+
+
+# 지역별 분석
+# 1. 지역과 연령에 따른 혈당 수치 히트맵
+pivot_df = df.pivot_table('혈당', '시도코드', '연령코드')
+sns.heatmap(pivot_df)
