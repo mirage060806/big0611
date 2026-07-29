@@ -1,0 +1,43 @@
+<!-- HTML5 문서의 구조 -->
+<!DOCTYPE html>
+<!-- 한글: ko, 영어: en, 일본어: ja, 중국어: zh -->
+<html lang="en">
+<head>
+    <!-- 메타데이터? 데이터를 설명하는 데이터 -->
+    <meta charset="UTF-8">
+    <!-- 뷰포트: 모바일 화면 크기 -->
+    <!-- content="width=device-width: 모바일 화면 크기를 디바이스 크기에 맞춤 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 타이틀: 문서 제목 -->
+    <title>Document</title>
+    <!-- 외부 CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 내부 CSS -->
+    <style>
+        img {width: 200px; height: 100px;}
+    </style>
+</head>
+<body>
+    <!-- HTML: Hyper Text Markup Language -->
+    <!-- 하이퍼 텍스트: 웹 페이지 간 이동을 위한 텍스트
+        SGML, XML, HTML, XHTML, ...
+        SGML: Standard Generalized Markup Language
+        XML: eXtensible Markup Language
+        HTML: Hyper Text Markup Language
+        XHTML: eXtensible Hyper Text Markup Language
+    -->
+    
+    <!-- 
+        속성
+            - 글로벌 속성: 모든 태그에 사용할 수 있는 속성
+            - class, id, style, title, ...
+
+        <시작태그>내용</끝태그>
+        <시작태그 속성="값">내용</끝태그>
+        <시작태그 속성="값">
+    -->
+    <p>문장입니다.</p>
+    <p class="red" id="blue">문장입니다.</p>
+    <img src="https://picsum.photos/200/300" alt="random image" title="random image">
+</body>
+</html>
