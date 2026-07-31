@@ -3,46 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- Metadata -->
     <base href="">
     <link rel="stylesheet" href="외부스타일.css">
-    <meta>
     <noscript>
         <p>자바스크립트가 꺼져 있을 때 안내</p>
-        <p>이 사이트를 이용하려면 JavaScript를 확인해주세요.</p>
+        <p>이 사이트를 이용하려면 Javascript를 활성화해주세요.</p>
     </noscript>
-    <script>// 내부 자바스키립트 작성</script>
+    <script>//내부 자바스크립트 작성</script>
     <style>/* 내부 CSS 작성 */</style>
     <template></template>
     <title>HTML 요소 구분</title>
-    
-
 </head>
 <body>
     <h1>콘텐츠 카테고리</h1>
-    <!-- Flow -->
+
+    <!-- 1. Flow -->
     <h2>Flow</h2>
+    
 
+    <!-- 2. Metadata: 7개
+        meta, link, base, script, noscript, style, template, title
+     -->
     <h2>Metadata</h2>
-    <p>메타데이터 과년 요소는 head 사이에 쓴다.</p>
+    <p>메타데이터 관련 요소는 head 사이에 쓴다.</p>
+    
 
-
-    <!-- Heading -->
+    <!-- 3. Heading: 8개
+        h1~h6, hgroup
+     -->
     <h2>Heading</h2>
+    <h1>큰 제목: 상단 로고, 본문 전체 제목</h1>
+    <h2>중간 제목: 섹션 제목</h2>
+    <h3>작은 제목</h3>
+    <h4>더 작은 제목</h4>
+    <h5>더더 작은 제목</h5>
+    <h6>더더더 작은 제목</h6>
     <hgroup>
-        <h1>큰 제목: 상단 로고, 본문 전체 제목</h1>
-        <h2>중간 제목: 섹션 제목</h2>
-        <h3>작은 제목</h3>
-        <h4>더 작은 제목</h4>
-        <h5>더더 작은 제목</h5>
-        <h6>더더더 제목</h6>
+        <h1>제목</h1>
+        <p>제목을 소개하는 간단한 문장입니다.</p>
     </hgroup>
 
 
-    <!-- Embedded -->
+    <!-- 4. Embedded: 10개
+        img, video, audio, iframe, picture,
+        canvas, svg, math, object, embed
+    -->
     <h2>Embedded</h2>
-    <img src="경로/파일명" alt="대체 텍스트">
+    <img src="경로/파일명" alt="대체텍스트">
     <video src="경로/파일명"></video>
     <video>
         <source src="경로/파일명" type="video/mp4">
@@ -57,11 +65,11 @@
         <source src="경로/파일명" type="audio/ogg">
         브라우저가 audio 태그를 지원하지 않습니다.
     </audio>
-    <iframe src="경로/파일명"></iframe>
+    <iframe src=""></iframe>
     <picture>
-        <!-- 992px 보다 크면 데스크탑.png 출력 -->
+        <!-- 992px 보다 크면 데스크탑.png를 출력 -->
         <source media="(min-width: 992px)" srcset="데스크탑.png">
-        <!-- 768px 보다 크면 테블릿, png 출력 -->
+        <!-- 768px 보다 크면 테이블릿.png를 출력 -->
         <source media="(min-width: 768px)" srcset="테블릿.png">
         <!-- 그렇지 않으면 모바일.png를 출력 -->
         <img src="모바일.png" alt="프로필 이미지">
@@ -72,32 +80,32 @@
     <math><!-- 수학 공식을 기술하고 표현합니다. --></math>
 
     <object data="" type=""><!-- PDF 문서, SVG 그래픽, 오디오/비디오, 다른 HTML 페이지 등 외부 멀티미디어 자원이나 외부 애플리케이션 데이터를 직접 불러와 삽입(Embed)하는 다목적 컨테이너 입니다. --></object>
+
     <object data="포폴가이드.pdf" type="application/pdf">
         <p>PDF 미리보기를 지원하지 않은 환경입니다.
         <a href="파폴가이드.pdf">다운로드하기</a></p>
     </object>
-    
+
     <embed src="" type="">
+
 
     <!-- 5. Interactive: 14개
         a, details
         input, label, textarea, button, select
         keygen,
         img, video, audio, iframe, object, embed
-    -->
-
-
-    <!-- Interactive -->
+     -->
     <h2>Interactive</h2>
     <a href="#">링크</a>
 
     <input type="password" id="pwd">
-    <label for="">비밀번호</label>
+    <label for="pwd">비밀번호</label>
     <textarea name="" id=""></textarea>
     <button type="submit">로그인</button>
     <select name="" id=""></select>
 
     <details></details>
+    <!-- HTML5 초기에 공개키 암호화 키 쌍(Key Pair)을 생성하기 위해 공식 태그로 도입되었으나, 보안 문제와 낮은 호환성 때문에 HTML5.2 명세에서 공식적으로 제거되었습니다. -->
     <keygen>
 
     <img src="" alt="">
@@ -108,7 +116,19 @@
     <embed src="" type="">
 
 
-    <!-- Phrasing: 36 -->
+    <!-- 6. Phrasing: 35개 
+        metadata(5): meta, link, script, noscript, template
+        interactive(6): a, keygen, input, label, button, select
+        embeded(10): img, picture, video, audio, iframe, canvas, svg, math, object, embed
+        
+        span, br, map, area,
+        strong, em, mark, q, small, del, ins,
+        b, i, u, s, sub, sup,
+        abbr, cite, time, data,
+        datalist, progress, meter, output,
+        code, dfn, kbd, var, samp, bdi, bdo, ruby, slot, wbr
+        
+    -->
     <h2>Phrasing</h2>
     <span>인라인 스타일링, 텍스트 그룹화</span>
     <br>: 줄바꿈
@@ -140,6 +160,14 @@
     <time datetime=""></time>
     <data value=""></data>
 
+    <!-- wbr (Word Break Opportunity / 줄바꿈 기회 지점): 한 텍스트 줄이 길어서 브라우저 창 크기에 따라 자동으로 줄바꿈이 일어날 때, "만약 줄을 바꿔야 한다면 바로 이 지점에서 끊어서 줄을 바꿔라" 하고 위치를 지정해 줍니다. -->
+    <!-- 화면이 좁아지면 http:// -> example.com/ -> extremely/ -> long... 순서의 / 지점에서 줄바꿈됨 -->
+    <p>http://<wbr>example.com/<wbr>extremely/<wbr>long/<wbr>url/<wbr>link</p>
+
+    <!-- 아주 긴 영어 단어 줄바꿈 유도 -->
+    <p>Super<wbr>cali<wbr>fragi<wbr>listic<wbr>expiali<wbr>docious</p>
+
+
     <!-- 폼(form) -->
     <datalist></datalist>
     <meter value=""></meter>
@@ -166,13 +194,21 @@
     <bdo dir="ltr">안녕하세요</bdo>
     <bdo dir="rtl">안녕하세요</bdo>
 
-    <ruby></ruby>
-    <slot></slot>
-    <wbr></wbr>
+    <!-- ruby (주석/윗글자 표기): 동아시아 언어(한자, 일본어)에서 한자의 발음(주음, 윗글자)이나 뜻을 글자 위에 작게 달아줄 때 사용합니다. -->
+    <p>
+        <!-- 한국어 한자: 漢字 위에 한글 발음 표기 -->
+        <ruby>
+            漢 <rp>(</rp><rt>한</rt><rp>)</rp>
+            字 <rp>(</rp><rt>자</rt><rp>)</rp>
+        </ruby>
+    </p>
+
+    <slot>최신 웹 표준 기술인 Web Components(Shadow DOM)에서 재사용 가능한 커스텀 컴포넌트를 만들 때, 외부에서 넘겨주는 텍스트나 HTML 요소를 끼워 넣는 "빈 구멍(Placeholder)" 역할을 합니다.</slot>
 
 
-    <!-- Sectioning -->
+    <!-- 7. Sectioning -->
     <h2>Sectioning</h2>
+    
 
 </body>
 </html>
