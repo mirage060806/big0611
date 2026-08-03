@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,7 @@
     <title>HTML 요소 구분</title>
 </head>
 <body>
+    <!-- 작업 결과 검증: https://validator.w3.org/ -->
     <h1>콘텐츠 카테고리</h1>
 
     <!-- 1. Flow
@@ -55,11 +56,14 @@
     </pre>
     <!-- 목록 
         1. ul 또는 ol은 하나이상의 li를 써야한다.
+        2. ul 태그 자식 요소는 li만 사용한다.
      -->
     <!-- ul(unordered list)은 순서없는 목록 -->
+    <h3>과일 목록</h3>
+    <p>맛있는 과일 목록입니다.</p>
     <ul>
-        <li>아이템1</li>
-        <li>아이템2</li>
+        <li>사과</li>
+        <li>바나나</li>
     </ul>
 
     <!-- ol(ordered list)은 순서있는 목록 -->
@@ -106,33 +110,116 @@
     </table>
 
     <!-- 
-        시멘틱 
-            main: 본문 핵심 영역
-                - 페이지에 1번만 사용!
-                - 내비게이션바, 사이드바, 푸터처럼 여러 페이지에 공통으로 반복 등장하는 요소는 넣으면 안된다!
-            header: 소개 및 탐색 영역
-            footer: 바닥글 영역
-            address: 연락처 정보
-     -->
+        시멘틱(의미있는) 요소
+            main
+                - 문서의 핵심 콘텐츠
+                - 페이지마다 보통 하나만 사용
+                - <header>, <footer>, <nav>처럼 반복되는 영역은 포함하지 않음
+            header
+                - 페이지나 특정 영역의 머리글입니다.
+                - 로고, 제목, 메뉴, 검색창
+                - <article> 안에도 사용할 수 있습니다.
+            footer
+                - 문서나 특정 영역의 바닥글입니다.
+                - 저작권, 연락처, 관련 링크, 작성자/소유자 정보
+                - <article> 안에도 사용할 수 있습니다.
+            address
+                - 작성자 또는 소유자의 연락처 정보를 나타냅니다.
+                - 이메일, 전화번호, 회사 주소, 웹사이트
+                - <address>는 일반적인 위치 주소를 표시하는 용도는 아닙니다.
+    -->
+    <header>
+        <h1><a href="#">로고</a></h1>
+        <nav>
+            <ul>
+                <li><a href="#home">홈</a></li>
+                <li><a href="#about">소개</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
-        <h1>스프링 부트 배포 가이드</h1>
-        <p>이 문서는 Render 플랫폼에 서비스를 배포하는 과정을 다룹니다.</p>
+        <h2>오늘의 주요 뉴스</h2>
+        <p>인공지능 기술의 바르게 발전하면서 웹 개발 방식에도 많은 변화가 생기고 있습니다.</p>
+        <p>특히 시맨틱 태그는 검색 엔진 최적화(SEO)와 accessibility(접근성) 개선에 매우 중요합니다.</p>
     </main>
-    header
-    footer
-    address
+    <footer>
+        <ul>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">개인정보처리방침</a></li>
+        </ul>
+        <address>
+            대표: 홍길동<br>
+            이메일: <a href="mailto:help@homepick.kr">help@homepick.kr</a><br>
+            전화: <a href="tel:031-123-4567">02-123-4567</a><br>
+            주소: 경기도 성남시 분당구 123
+        </address>
+        <small>&copy; 2026 Homepick. All rights reserved.</small>
+    </footer>
+
 
     <!-- 폼 -->
     <form action=""></form>
     <fieldset></fieldset>
 
-    blockquote
+    <!-- 인용문 
+        blockquote: 긴 인용문, 블록 단위, 여러 문장, 문단
+        q: 짧은 인용문, 문장안, 한 문장 또는 짧은 구절
+    -->
+    <p>스티브 잡스는 다음과 같은 유명한 말을 남겼습니다.</p>
+    <blockquote cite="https://www.stanford.edu">
+        <p>여정 그 자체로 충분한 보상입니다. 계속해서 갈망하고, 여전히 우직하게 살아가십시오. (Stay hungry, stay foolish.)</p>
+    </blockquote>
+    <p>선생님께서 나에게 <q cite="https://example.com">포기하지 말고 끝까지 도전하라</q>고 조언해 주셨다.</p>
+    <p>선생님은 <q>열심히 공부하세요.</q>라고 말씀하셨다.</p>
+
     <!-- 수평선 -->
     <hr>
-    figure
-    menu
-    dialog
-    search
+
+    <!-- 
+        HTML5의 시맨틱 태그 또는 특수 목적 태그입니다.
+            figure
+                - 이미지, 일러스트, 도표, 코드 등 독립된 시각적 콘텐츠와 그에 대한 설명(figcaption)을 하나로 묶을 때 사용합니다.
+            menu
+                - <ul>과 동일하게 순서 없는 항목 리스트를 나타내지만, 단순 목록이 아닌 사용자가 클릭해서 명령을 수행하는 작업(메뉴) 목록이라는 의미를 갖습니다. 거의 사용 안 함
+            dialog
+                - 모달(Modal) 창이나 팝업 대화상자를 만들 때 사용하는 시맨틱 태그입니다. 별도의 복잡한 라이브러리 없이 자바스크립트 기본 메서드(showModal(), close())로 제어할 수 있습니다.
+            search 
+                - 웹사이트의 검색 또는 필터링 폼 영역을 명확히 감싸기 위해 비교적 최근에 도입된 시맨틱 태그입니다. (기존 <form role="search">를 대체)
+    -->
+
+    <figure>
+        <img src="https://d2mgzmtdeipcjp.cloudfront.net/files/good/2024/05/20/17161926044508.jpg" alt="호수 풍경 사진">
+        <figcaption>[그림 1] 스위스 인터라켄의 호수 전경</figcaption>
+    </figure>
+
+    <menu>
+        <li><button type="button" onclick="alert('복사됨')">복사하기</button></li>
+        <li><button type="button" onclick="alert('붙여넣기됨')">붙어넣기</button></li>
+        <li><button type="button" onclick="alert('삭제됨')">삭제하기</button></li>
+    </menu>
+
+    <!-- 대화상자/모달 창 -->
+    <button type="button" onclick="document.getElementById('myDialog').showModal()">모달 열기</button>
+    <dialog id="myDialog">
+        <h3>알림</h3>
+        <p>정말로 삭제하시겠습니까?</p>
+        <button type="button" onclick="document.getElementById('myDialog').close()">취소</button>
+        <button type="button" onclick="alert('삭제 완료'); document.getElementById('myDialog').close();">확인</button>
+    </dialog>
+
+    <!-- 검색 폼 영역 -->
+    <form role="search">
+
+    </form>
+
+    <search>
+        <form action="/search" method="post">
+            <label for="query">블로그 검색</label>
+            <input type="search" id="query" name="q" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+        </form>
+    </search>
+
     
     <!-- 2. Metadata: 8개
         base, link, meta, noscript, script, style, template, title
