@@ -43,7 +43,7 @@ html_doc = '''
 '''
 
 soup = Bs(html_doc, 'html.parser')
-# soup.find_all(태그, 속성딕셔너리)
+# soup.find_all('태그명', 속성딕셔너리)
 # soup.find_all('태그명', {'속성':'속성값'})
 clothes = soup.find_all('table', {'class':'two'})
 print(clothes)
