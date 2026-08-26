@@ -16,7 +16,7 @@
     <form action="test.jsp">
         <!-- HTML4.01 이전 -->
         <!-- maxlength: 입력 필드에 입력할 수 있는 문자의 최대 개수 -->
-        <input type="text" pattern="[a-zA-Z0-9]{4,20}" title="영문과 숫자를 사용하여 4~20자로 입력하세요." required>아이디<br>
+        <input type="text" size="30" maxlength="20" pattern="[a-zA-Z0-9]{4,20}" title="영문과 숫자를 사용하여 4~20자로 입력하세요." required>아이디<br>
 
         <input type="text" value="편집 불가" disabled>편집 불가<br>
         <input type="password" pattern="(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}" title="영문, 숫자, 특수문자를 포함하여 8~20자로 입력하세요." required>패스워드<br>
