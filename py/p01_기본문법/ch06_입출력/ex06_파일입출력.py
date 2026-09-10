@@ -1,18 +1,18 @@
-# 파일 입력: 파일 내용 쓰기.
+# 파일 입력: 파일 내용 쓰기
 # 파일 모드
 '''
-f = open('파일명', '파일모드')
+open('파일명', '파일모드')
 
 r(read): 읽기 -> read()
 
-w(write): 쓰기 -> write(), 덮어 씌운다(overwrite)
+w(write): 쓰기 -> write(), 덮어 씌운다.
 a(append): 추가 -> write()
 '''
 f = open('abc1.txt', 'w')
 f.write('A B C D E F G ')
 f.close()
 
-f = open('abc2.txt', 'w')
+f = open('abc1.txt', 'w')
 f.write('a b c d e f g ')
 f.close()
 
@@ -26,8 +26,8 @@ f = open('abc1.txt', 'r')
 print(f.read())
 f.close()
 
-f = open('abc2.txt', 'r')
 # readlines(): 한 줄씩 읽기
+f = open('abc2.txt', 'r')
 lines = f.readlines()
 for line in lines:
     print(line)
@@ -52,9 +52,11 @@ with open('일기.txt', 'r', encoding='utf-8') as f:
 
 # 파일 삭제
 # 내부 모듈 가져오기
+# shift+enter
 import os
 
 fileName = 'abc1.txt'
+# 만약에 fileName이 존재하면 True, 아니면 false
 if os.path.exists(fileName):
     os.remove(fileName)
     print('{}파일을 삭제하였습니다.'.format(fileName))

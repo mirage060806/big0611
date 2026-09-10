@@ -2,8 +2,8 @@
 '''
 이름 = {
     '키': 값,
+    'key': value
     ...
-    '키': '값
 }
 '''
 # 생성
@@ -13,6 +13,7 @@ my_dict = {
     'height': 190,
     'weight': 99.9
 }
+
 print(my_dict)
 
 # 선택

@@ -4,6 +4,7 @@
 # https://www.reb.or.kr/r-one/portal/openapi/openApiDevPage.do#
 
 import os
+
 import requests
 from dotenv import load_dotenv
 
@@ -15,11 +16,13 @@ serviceKey = os.getenv("REB_SERVICE_KEY")
 endpoint = "https://www.reb.or.kr/r-one/openapi/SttsApiTbl.do"
 params = {
     "KEY": serviceKey,
-    "Type": "json",
-    "pIndex": "1",
-    "pSize": "100",     # 에러가 나지 않는 안전한 크기 설정
-    "STATBL_ID": "A_2024_00900"   # ⚠️ 현재 공공데이터포털 가이드북에 적힌 정확한 코드로 교체 필요
+    "Type": "json", # 기본값은 xml, json으로 요청 시 JSON 형식으로 응답
+    "pIndex": "1",  # 출력하고자 하는 페이지
+    "pSize": "100",     # 한 페이지에 출력될 건수, 최대 100까지 가능
+    "STATBL_ID": "A_2024_00900"   # 연) 지역별 지가지수
 }
+
+# url = https://www.reb.or.kr/r-one/openapi/SttsApiTbl.do?KEY=서비스키&Type=json&pIndex=1&pSize=100&STATBL_ID=A_2024_00900
 
 headers = {"User-Agent": "Mozilla/5.0"}
 

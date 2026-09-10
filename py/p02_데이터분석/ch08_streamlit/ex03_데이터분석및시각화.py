@@ -1,16 +1,16 @@
-# streamlit은 그 파일에서 터밀널을 열어서 (streamlit run 파일명)을 적고 enter.
 # 데이터 표시와 시각화
 ## 데이터프레임과 테이블 표시
 # 1. 데이터를 표로 보여주기
 from datetime import datetime, timedelta
+
+import numpy as np
 import streamlit as st
 import pandas as pd
-import numpy as np
 import plotly.graph_objects as go
 
 # 학생 성적 데이터 만들기
 data = {
-    '이름':['가주', '나라떼', '다란다', '라이센스'],
+    '이름': ['홍길동', '김길동', '박기흥', '이미금'],
     '수학': [85, 92, 78, 86],
     '영어': [88, 85, 90, 93],
     '과학': [90, 88, 85, 89]
@@ -19,7 +19,7 @@ data = {
 # 데이터 분석
 df = pd.DataFrame(data)
 
-# 브라우저 표시할 콘텐츠
+# 웹 브라우저 표시할 콘텐츠
 st.title('학생 성적 데이터 표시하기')
 st.dataframe(df)
 
@@ -46,12 +46,13 @@ def color_rating(val):
 
 # 스타일 적용해서 표시
 # Pandas 2.1.0 버전부터 applymap() -> map()
-# Pandas 3.0.3
+# 현재 버전: Pandas 3.0.3
+# 확인: pip show pandas
 styled_df = df.style.format({
     '가격': '{:,}원',
     '판매량': '{:,}개',
     '평점': '{:.1f}점'
-}).map(color_rating, subset=['가격', '평점'])
+}).map(color_rating, subset=['평점'])
 
 st.dataframe(styled_df)
 
@@ -65,6 +66,7 @@ weather_data = {
 # 데이터 분석
 weather_df = pd.DataFrame(weather_data)
 st.table(weather_df)
+
 
 # 기본 차트 컴포넌트
 # 1. 선 그래프로 추세 보기
@@ -80,14 +82,16 @@ visitor_df = pd.DataFrame({
 
 # 콘텐츠 구성
 st.title('기본 차트 예시')
-st.subheader('웹 사이트 일일 빙문자 수')
+st.subheader('웹 사이트 일일 방문자 수')
 
-# st.line_chart(visitor_df.set_index('Date')['Visitors'])
+st.line_chart(visitor_df.set_index('Date')['Visitors'])
 # streamlit v1.13.0 이상
 # pip show streamlit
+# 현재 버전: 1.59.2
 st.line_chart(data=visitor_df, x='Date', y='Visitors')
 
 # 2. 막대 그래프로 비교하기
+# 도시별 인구 비교
 population_data = {
     '서울': 9720000,
     '부산': 3390000,
@@ -98,13 +102,17 @@ population_data = {
 
 # 데이터 분석
 population_df = pd.DataFrame(list(population_data.items()), columns=['도시', '인구수'])
+print(population_df)
 
-# 컨텐츠 분석
+# 콘텐츠 구성
 st.subheader('주요 도시 인구 비교')
-# st.bar_chart(population_df.set_index('도시')['인구수'])
+st.bar_chart(population_df.set_index('도시')['인구수'])
 st.bar_chart(data=population_df, x='도시', y='인구수')
 
 # 3. 영역 차트로 누적 보기
+'''
+- 시간에 따른 여러 요소의 변화를 함께 보여줄 때는 영역 차트를 사용한다.
+'''
 # 월별 매출 구성 비교
 monthly_data = pd.DataFrame({
     'Date': dates,
@@ -114,25 +122,24 @@ monthly_data = pd.DataFrame({
 })
 
 st.subheader('채널별 매출 구성 변화')
-# st.area_chart(monthly_data.set_index('Date'))
+st.area_chart(monthly_data.set_index('Date'))
 st.area_chart(data=monthly_data, x='Date')
 
 # plotly 차트 통합
 # 1. 인터랙티브 차트의 장점
-st.title('Plotly 차트 통합')
 
-# 제품 판매량 데이터 생성
+st.title('Plotly 차트 통합')
 dates = [datetime.now() - timedelta(days=x) for x in range(100, 0, -1)]
 np.random.seed(42)
 sales = np.random.randint(50, 200, 100)
 
-# Ploty 선 그래프
+# Plotly 선 그래프
 fig = go.Figure()
 fig.add_trace(go.Scatter(
     x=dates,
     y=sales,
     mode='lines',
-    name='일일 판매량', # 툴팀 또는 범례
+    name='일일 판매량', # 툴팁 또는 범례
     line=dict(color='blue', width=2)
 ))
 
@@ -142,14 +149,15 @@ fig.update_layout(
     yaxis_title='판매량 (개)',
     height=400
 )
-
-# use_container_width=True를 사용하면 화면 크기에 맞춰서 차트가 조정된다.
+# use_container_width=True: 화면 크기에 맞춰 차트 크기가 조정
 st.plotly_chart(fig, use_container_width=True)
 
 # 2. 산점도 차트 만들기
 # 광고비와 매출의 관계
 np.random.seed(42)
+# 광고비
 ad_spend = np.random.randint(10, 100, 50)
+# 매출
 revenue = ad_spend * 2.5 + np.random.normal(0, 20, 50)
 
 scatter_fig = go.Figure()
@@ -177,6 +185,9 @@ st.plotly_chart(scatter_fig, use_container_width=True)
 
 
 # 3. 파이 차트로 비율 보기
+'''
+- 전체에서 각 부분이 차지하는 비율을 보여줄 때는 파이 차트를 사용한다.
+- 파이 차트는 전체 100%에서 각 항목이 차지하는 비율을 직관적으로 보여준다.'''
 # 설문조사 결과
 survey_data = {
     '매우 만족': 25,
@@ -212,7 +223,8 @@ hist_fig.add_trace(go.Histogram(
     x=heights,
     nbinsx=20,
     name='키 분포',
-    marker_color='lightblue'
+    showlegend=True, # 범례 라벨 표시
+    marker_color='lightgreen'
 ))
 
 hist_fig.update_layout(

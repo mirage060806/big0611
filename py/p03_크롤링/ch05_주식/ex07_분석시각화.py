@@ -1,9 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from ex06_데이터조회 import db_select
+
 # 데이터 분석
 # 추출 결과 데이터프레임으로 저장
 colnames = ['seq', 'dt', 'item_name', 'item_code', 'price', 'foreign_ownership_ratio', 'rel_return', 'per', 'per_12m', 'per_ind', 'pbr', 'dividend_yield', 'volume', 'trans_price', 'market_capital_prefer', 'market_capital_common']
+
+rows = db_select()
 
 df = pd.DataFrame(rows, columns=colnames)
 print(df)

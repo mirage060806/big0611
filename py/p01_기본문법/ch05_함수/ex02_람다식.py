@@ -7,8 +7,8 @@ print((lambda x : x + 5)(100))
 sum5 = lambda x : x + 5
 print(sum5(100))
 
-# 권장 체충 계산
-# 권장 체충 = (키 - 100) * 0.9
+# 권장 체중 계산
+# 권장 체중 = (키 - 100) * 0.9
 '''
 변수(함수명) = lambda 매개변수 : 실행문
 '''
@@ -16,8 +16,7 @@ weight = lambda height : (height - 100) * 0.9
 print(weight(170))
 
 def weight_value(height):
-   return (height - 100) * 0.9
-    
+    return (height - 100) * 0.9
 print(weight_value(170))
 
 print((lambda height : (height - 100) * 0.9)(170))
@@ -30,7 +29,7 @@ print(weight2(True, 170))
 
 # 일반 함수
 def weight_value2(man, height):
-   if man:
-      return (height - 100) * 0.9
-   else:
-      return (height - 100) * 0.85
+    if man:
+        return (height - 100) * 0.9
+    else:
+        return (height - 100) * 0.85

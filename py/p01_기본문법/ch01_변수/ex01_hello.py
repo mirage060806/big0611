@@ -1,5 +1,5 @@
 # 간단한 코드 실행해보기
-print("Hello, World!")
+print("Hello Python")
 print(3 + 5)
 print(5 * 9)
 # 주석

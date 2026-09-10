@@ -74,7 +74,7 @@ def crawl_stock_data():
     # 46.71
 
 
-    # 6. 상대 수익률
+    # 6. 1Y 수익률
     rel_return1 = soup.find_all('span', {'class':'tcr'})
     rel_return2 = rel_return1[2].text.replace('+','')
     rel_return = float(rel_return2)
@@ -209,3 +209,4 @@ def crawl_stock_data():
     print('크롤링 완료! 결과를 res에 담았습니다.')
 
     return res
+
