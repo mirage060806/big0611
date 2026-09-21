@@ -16,4 +16,5 @@ python-dotenv
 openpyxl
 pymysql
 scikit-learn
+graphviz
 tensorflow
